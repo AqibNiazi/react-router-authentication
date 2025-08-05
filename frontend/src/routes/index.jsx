@@ -5,12 +5,12 @@ import EventDetails, {
   loader as eventDatailsLoader,
   action as eventDetailsAction,
 } from "../page/EventDetails";
-import NewEvent, { action as newEventAction } from "../page/NewEvent";
+import NewEvent from "../page/NewEvent";
 import EditEvent from "../page/EditEvent";
 import AppLayout from "../Layout/AppLayout";
 import EventsRootLayout from "../page/EventRoot";
 import Error from "../page/Error";
-
+import { action as eventFormAction } from "../components/EventForm";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -44,6 +44,7 @@ const router = createBrowserRouter([
               {
                 path: "edit",
                 element: <EditEvent />,
+                action: eventFormAction,
               },
             ],
           },
@@ -51,7 +52,7 @@ const router = createBrowserRouter([
           {
             path: "new",
             element: <NewEvent />,
-            action: newEventAction,
+            action: eventFormAction,
           },
         ],
       },
