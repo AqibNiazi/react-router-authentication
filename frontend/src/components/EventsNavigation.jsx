@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+
 import classes from "./EventsNavigation.module.css";
 
 function EventsNavigation() {
@@ -12,7 +13,7 @@ function EventsNavigation() {
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
               }
-              end="/events"
+              end
             >
               All Events
             </NavLink>
