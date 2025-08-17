@@ -14,7 +14,9 @@ import { action as eventFormAction } from "../components/EventForm";
 import NewsletterPage, {
   action as newsletterAction,
 } from "../components/Newsletter";
-import AuthenticationPage from "../page/Authentication";
+import AuthenticationPage, {
+  action as authAction,
+} from "../page/Authentication";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -68,6 +70,7 @@ const router = createBrowserRouter([
       {
         path: "auth",
         element: <AuthenticationPage />,
+        action: authAction,
       },
     ],
   },
