@@ -1,7 +1,8 @@
 import EventItem from "../components/EventItem";
 import { redirect, useParams, useRouteLoaderData } from "react-router-dom";
-
+import { getAuthToken } from "../util/auth";
 const EventDetailPage = () => {
+  const token = getAuthToken();
   const data = useRouteLoaderData("event-details");
   return <EventItem event={data.event} />;
 };
@@ -26,6 +27,10 @@ export const action = async ({ request, params }) => {
     `http://localhost:8080/events/${params.eventId}`,
     {
       method: request.method,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     }
   );
   if (!response.ok) {
