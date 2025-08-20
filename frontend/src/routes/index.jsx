@@ -11,17 +11,22 @@ import AppLayout from "../Layout/AppLayout";
 import EventsRootLayout from "../page/EventRoot";
 import Error from "../page/Error";
 import { action as eventFormAction } from "../components/EventForm";
+import { action as logoutAction } from "../page/Logout";
+
 import NewsletterPage, {
   action as newsletterAction,
 } from "../components/Newsletter";
 import AuthenticationPage, {
   action as authAction,
 } from "../page/Authentication";
+import { tokenLoader } from "../util/auth";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
     errorElement: <Error />,
+    loader: tokenLoader,
+    id: "root",
     children: [
       {
         index: true,
@@ -63,14 +68,18 @@ const router = createBrowserRouter([
         ],
       },
       {
+        path: "auth",
+        element: <AuthenticationPage />,
+        action: authAction,
+      },
+      {
         path: "newsletter",
         element: <NewsletterPage />,
         action: newsletterAction,
       },
       {
-        path: "auth",
-        element: <AuthenticationPage />,
-        action: authAction,
+        path: "logout",
+        action: logoutAction,
       },
     ],
   },
