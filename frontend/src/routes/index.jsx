@@ -19,7 +19,7 @@ import NewsletterPage, {
 import AuthenticationPage, {
   action as authAction,
 } from "../page/Authentication";
-import { tokenLoader } from "../util/auth";
+import { checkAuthLoader, tokenLoader } from "../util/auth";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -56,6 +56,7 @@ const router = createBrowserRouter([
                 path: "edit",
                 element: <EditEvent />,
                 action: eventFormAction,
+                loader: checkAuthLoader,
               },
             ],
           },
@@ -64,6 +65,7 @@ const router = createBrowserRouter([
             path: "new",
             element: <NewEvent />,
             action: eventFormAction,
+            loader: checkAuthLoader,
           },
         ],
       },
